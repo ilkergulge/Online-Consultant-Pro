@@ -9,4 +9,6 @@ class SystemSetting extends Model
 {
     /** @use HasFactory<\Database\Factories\SystemSettingFactory> */
     use HasFactory;
+
+    protected $fillable = ['key', 'value', 'group'];
 }
