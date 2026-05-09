@@ -21,8 +21,14 @@ class SlotCalculationService
         $slotDuration = $consultant->consultantProfile->slot_duration ?? 60;
         $slots = [];
 
-        // For this step, we simply generate the generic slots from the availabilities.
-        // Integration with actual `appointments` table for booking conflict checking will be enhanced in the checkout step.
+        $bookedSlots = $consultant->appointments()
+            ->whereDate('scheduled_at', $dateString)
+            ->whereIn('status', ['pending', 'confirmed'])
+            ->pluck('scheduled_at')
+            ->map(function($date) {
+                return Carbon::parse($date)->format('H:i');
+            })->toArray();
+
         foreach ($availabilities as $availability) {
             $start = Carbon::parse($dateString . ' ' . $availability->start_time);
             $end = Carbon::parse($dateString . ' ' . $availability->end_time);
@@ -36,7 +42,10 @@ class SlotCalculationService
                     continue;
                 }
 
-                $slots[] = $slotTime;
+                if (!in_array($slotTime, $bookedSlots)) {
+                    $slots[] = $slotTime;
+                }
+
                 $start->addMinutes($slotDuration);
             }
         }

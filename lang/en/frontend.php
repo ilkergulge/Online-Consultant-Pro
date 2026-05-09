@@ -43,4 +43,15 @@ return [
     'no_slots_available' => 'No slots available for this date.',
     'book_now' => 'Book Now',
     'per_session' => 'per session',
+
+    // Checkout
+    'payment_success' => 'Payment Successful!',
+    'payment_success_desc' => 'Your appointment has been successfully booked. You will receive an email shortly.',
+    'go_to_dashboard' => 'Go to Dashboard',
+    'payment_failed' => 'Payment Failed',
+    'payment_failed_desc' => 'There was an issue processing your payment. Please try again.',
+    'try_again' => 'Try Again',
+
+    // Meeting
+    'join_meeting' => 'Join Meeting',
 ];

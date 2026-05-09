@@ -49,10 +49,11 @@
                     @else
                         <div class="grid grid-cols-2 gap-2">
                             @foreach($availableSlots as $slot)
-                                <form action="#" method="POST">
+                                <form action="{{ route('checkout.process', $consultant) }}" method="POST">
                                     @csrf
-                                    <!-- Temporary dead link for step 5, will be wired up in step 6 checkout -->
-                                    <button type="button" onclick="alert('Checkout integration coming in Step 6!')" class="w-full bg-white border border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white py-2 rounded text-sm font-medium transition duration-200">
+                                    <input type="hidden" name="date" value="{{ $date }}">
+                                    <input type="hidden" name="time" value="{{ $slot }}">
+                                    <button type="submit" class="w-full bg-white border border-blue-200 text-blue-700 hover:bg-blue-600 hover:text-white py-2 rounded text-sm font-medium transition duration-200">
                                         {{ $slot }}
                                     </button>
                                 </form>

@@ -43,4 +43,15 @@ return [
     'no_slots_available' => 'Bu tarih için uygun saat bulunmuyor.',
     'book_now' => 'Şimdi Ayırt',
     'per_session' => 'seans başı',
+
+    // Checkout
+    'payment_success' => 'Ödeme Başarılı!',
+    'payment_success_desc' => 'Randevunuz başarıyla oluşturuldu. Kısa süre içinde bir bilgilendirme e-postası alacaksınız.',
+    'go_to_dashboard' => 'Panele Git',
+    'payment_failed' => 'Ödeme Başarısız',
+    'payment_failed_desc' => 'Ödemeniz işlenirken bir sorun oluştu. Lütfen tekrar deneyin.',
+    'try_again' => 'Tekrar Dene',
+
+    // Meeting
+    'join_meeting' => 'Toplantıya Katıl',
 ];

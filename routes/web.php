@@ -6,9 +6,31 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ConsultantListController;
 
+use App\Http\Controllers\CheckoutController;
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/consultants', [ConsultantListController::class, 'index'])->name('consultants.index');
 Route::get('/consultants/{consultant}', [ConsultantListController::class, 'show'])->name('consultants.show');
+
+use App\Http\Controllers\MeetingController;
+
+Route::middleware('auth')->group(function () {
+    Route::post('/checkout/{consultant}', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::get('/meeting/{appointment}', [MeetingController::class, 'show'])->name('meeting.show');
+});
+
+// Move callbacks outside of auth middleware because payment gateways return POSTs without session cookies/CSRF tokens.
+// The callbacks will use the generated cache token to re-identify the session and user.
+Route::match(['get', 'post'], '/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+Route::match(['get', 'post'], '/checkout/failure', [CheckoutController::class, 'failure'])->name('checkout.failure');
+
+// Local route to render the shopier HTML form redirect
+Route::get('/checkout/shopier-redirect', function (Illuminate\Http\Request $request) {
+    $token = $request->query('token');
+    $args = Illuminate\Support\Facades\Cache::get('shopier_args_' . $token);
+    if (!$args) abort(404);
+    return view('frontend.checkout.shopier', compact('args'));
+})->name('checkout.shopier');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
