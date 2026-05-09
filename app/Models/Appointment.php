@@ -17,7 +17,16 @@ class Appointment extends Model
         'duration_minutes',
         'status',
         'meeting_link',
+        'reminder_24h_sent',
+        'reminder_1h_sent',
     ];
+
+    protected function casts(): array
+    {
+        return [
+            'scheduled_at' => 'datetime',
+        ];
+    }
 
     public function client()
     {

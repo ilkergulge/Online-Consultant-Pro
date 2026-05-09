@@ -54,4 +54,15 @@ return [
 
     // Meeting
     'join_meeting' => 'Join Meeting',
+
+    // Emails
+    'appointment_confirmed_subject' => 'Your Appointment is Confirmed',
+    'appointment_reminder_subject' => 'Appointment Reminder',
+    'hello' => 'Hello',
+    'appointment_confirmed_message' => 'Your appointment has been successfully booked. Please find the details below:',
+    'appointment_reminder_message' => 'This is a friendly reminder for your upcoming appointment:',
+    'date' => 'Date',
+    'time' => 'Time',
+    'consultant' => 'Consultant',
+    'thank_you' => 'Thank you for using our platform!',
 ];

@@ -54,4 +54,15 @@ return [
 
     // Meeting
     'join_meeting' => 'Toplantıya Katıl',
+
+    // Emails
+    'appointment_confirmed_subject' => 'Randevunuz Onaylandı',
+    'appointment_reminder_subject' => 'Randevu Hatırlatması',
+    'hello' => 'Merhaba',
+    'appointment_confirmed_message' => 'Randevunuz başarıyla oluşturuldu. Detayları aşağıda bulabilirsiniz:',
+    'appointment_reminder_message' => 'Yaklaşan randevunuz için dostça bir hatırlatmadır:',
+    'date' => 'Tarih',
+    'time' => 'Saat',
+    'consultant' => 'Danışman',
+    'thank_you' => 'Platformumuzu kullandığınız için teşekkür ederiz!',
 ];

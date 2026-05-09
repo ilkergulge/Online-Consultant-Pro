@@ -51,6 +51,8 @@ class AppointmentService
 
             DB::commit();
 
+            \App\Jobs\SendAppointmentNotificationsJob::dispatch($appointment);
+
             return $appointment;
 
         } catch (Exception $e) {
