@@ -34,4 +34,15 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->grou
     Route::resource('settings', SystemSettingController::class)->only(['index', 'store']);
 });
 
+use App\Http\Controllers\Consultant\DashboardController as ConsultantDashboardController;
+use App\Http\Controllers\Consultant\ProfileController as ConsultantProfileController;
+use App\Http\Controllers\Consultant\AvailabilityController;
+
+Route::middleware(['auth', 'role:consultant'])->prefix('consultant')->name('consultant.')->group(function () {
+    Route::get('/dashboard', [ConsultantDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [ConsultantProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ConsultantProfileController::class, 'update'])->name('profile.update');
+    Route::resource('availability', AvailabilityController::class)->except(['create', 'show', 'edit', 'update']);
+});
+
 require __DIR__.'/auth.php';
