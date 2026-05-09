@@ -3,9 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ConsultantListController;
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/consultants', [ConsultantListController::class, 'index'])->name('consultants.index');
+Route::get('/consultants/{consultant}', [ConsultantListController::class, 'show'])->name('consultants.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
