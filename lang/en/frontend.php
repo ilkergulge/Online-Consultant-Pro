@@ -65,4 +65,13 @@ return [
     'time' => 'Time',
     'consultant' => 'Consultant',
     'thank_you' => 'Thank you for using our platform!',
+
+    // Errors
+    'error_404_title' => 'Page Not Found',
+    'error_404_desc' => 'Sorry, we couldn\'t find the page you\'re looking for.',
+    'error_403_title' => 'Access Denied',
+    'error_403_desc' => 'You do not have permission to access this page.',
+    'error_500_title' => 'Server Error',
+    'error_500_desc' => 'Oops! Something went wrong on our end. Please try again later.',
+    'back_to_home' => 'Back to Home',
 ];

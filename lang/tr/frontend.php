@@ -65,4 +65,13 @@ return [
     'time' => 'Saat',
     'consultant' => 'Danışman',
     'thank_you' => 'Platformumuzu kullandığınız için teşekkür ederiz!',
+
+    // Errors
+    'error_404_title' => 'Sayfa Bulunamadı',
+    'error_404_desc' => 'Üzgünüz, aradığınız sayfayı bulamadık.',
+    'error_403_title' => 'Erişim Reddedildi',
+    'error_403_desc' => 'Bu sayfaya erişim izniniz bulunmamaktadır.',
+    'error_500_title' => 'Sunucu Hatası',
+    'error_500_desc' => 'Bir şeyler ters gitti. Lütfen daha sonra tekrar deneyin.',
+    'back_to_home' => 'Anasayfaya Dön',
 ];

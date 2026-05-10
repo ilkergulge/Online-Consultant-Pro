@@ -14,8 +14,11 @@ Route::get('/consultants/{consultant}', [ConsultantListController::class, 'show'
 
 use App\Http\Controllers\MeetingController;
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'throttle:checkout'])->group(function () {
     Route::post('/checkout/{consultant}', [CheckoutController::class, 'process'])->name('checkout.process');
+});
+
+Route::middleware('auth')->group(function () {
     Route::get('/meeting/{appointment}', [MeetingController::class, 'show'])->name('meeting.show');
 });
 
