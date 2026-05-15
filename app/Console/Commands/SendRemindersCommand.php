@@ -41,7 +41,10 @@ class SendRemindersCommand extends Command
 
         foreach ($appointments24h as $appointment) {
             SendAppointmentReminderJob::dispatch($appointment);
-            $appointment->update(['reminder_24h_sent' => true]);
+        }
+
+        if ($appointments24h->isNotEmpty()) {
+            Appointment::whereIn('id', $appointments24h->pluck('id'))->update(['reminder_24h_sent' => true]);
         }
 
         // 1 Hour Reminders
@@ -55,7 +58,10 @@ class SendRemindersCommand extends Command
 
         foreach ($appointments1h as $appointment) {
             SendAppointmentReminderJob::dispatch($appointment);
-            $appointment->update(['reminder_1h_sent' => true]);
+        }
+
+        if ($appointments1h->isNotEmpty()) {
+            Appointment::whereIn('id', $appointments1h->pluck('id'))->update(['reminder_1h_sent' => true]);
         }
 
         $this->info("Dispatched " . ($appointments24h->count() + $appointments1h->count()) . " reminder jobs.");
