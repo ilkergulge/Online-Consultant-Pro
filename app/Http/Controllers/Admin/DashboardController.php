@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\ReportService;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(ReportService $reportService)
     {
-        return view('admin.dashboard');
+        $metrics = $reportService->getDashboardMetrics();
+        return view('admin.dashboard', compact('metrics'));
     }
 }
